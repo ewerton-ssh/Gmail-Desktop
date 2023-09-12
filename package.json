@@ -1,0 +1,55 @@
+
+{
+  "name": "gmail-desktop",
+  "productName": "gmail-desktop",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "ewerton-ssh",
+    "email": "ewerton7e999@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+    "electron": "26.2.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.gmaildesktop.app",
+    "productName": "Gmail Desktop",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "src/assets/linux.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/windows.ico"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "src/assets/linux.png"
+    }
+  }
+}
+
+
