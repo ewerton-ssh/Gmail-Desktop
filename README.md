@@ -12,5 +12,5 @@ Gmail desktop app for users who don't like email clients or opening multiple tab
 
 PS: It's not an official Gmail app, just Gmail webview webapp.
 
-**Credits: ewerton-ssh (front-end brazilian developer).
-See my portfolio: [ewerton lima.](https://ewertonlima.netlify.app/)**
+**Credits: ewerton-ssh (front-end brazilian developer).**
+**See my portfolio: [ewerton lima.](https://ewertonlima.netlify.app/)**
