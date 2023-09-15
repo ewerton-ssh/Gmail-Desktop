@@ -2,7 +2,7 @@ const { app, BrowserWindow, shell } = require('electron');
 const contextMenu = require('electron-context-menu');
 
 app.on('ready', () => {
-  const mainWindow = new BrowserWindow({
+  let mainWindow = new BrowserWindow({
     icon: __dirname + '/assets/gmail.ico',
     autoHideMenuBar: true,
   });
