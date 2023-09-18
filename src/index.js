@@ -1,5 +1,6 @@
-const { app, BrowserWindow, shell } = require('electron');
+const { app, BrowserWindow, shell} = require('electron');
 const contextMenu = require('electron-context-menu');
+const path = require('path');
 
 app.on('ready', () => {
   let mainWindow = new BrowserWindow({
@@ -7,11 +8,16 @@ app.on('ready', () => {
     autoHideMenuBar: true,
   });
 
-  mainWindow.webContents.setWindowOpenHandler(() => {
-    return {action: "deny"}
-  })
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    mainWindow.loadURL(url);
+    return { action: 'deny' };
+  });
 
-  mainWindow.loadURL('https://mail.google.com/');
+  const mainURL = 'https://mail.google.com/';
+
+  //mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+  mainWindow.loadURL(mainURL);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -28,23 +34,24 @@ app.on('ready', () => {
       paste: 'Colar',
       save: 'Salvar imagem',
       copyLink: 'Copiar link',
-      inspect: 'Inspecionar elemento',
       selectAll: 'Selecionar tudo'
     },
-    prepend: (params, browserWindow) => [{
-      label: 'Copiar link',
-      visible: params.linkURL !== undefined,
-      click: () => {
-        clipboard.writeText(params.linkURL);
-      }
-    }],
-    append: (defaultActions, params, browserWindow) => [
+    prepend: (params) => [
+      {
+        label: 'Copiar link',
+        visible: params.linkURL !== undefined,
+        click: () => {
+          clipboard.writeText(params.linkURL);
+        },
+      },
+    ],
+    append: (params) => [
       {
         label: 'Abrir link no navegador',
         click: () => {
           shell.openExternal(params.linkURL);
-        }
-      }
-    ]
+        },
+      },
+    ],
   });
 });
